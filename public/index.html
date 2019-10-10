@@ -24,20 +24,51 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Ticketbrite</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.3/csshake.min.css">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <script>
+      // Shake if 'X' is pressed, hide if 'C' is pressed
+      document.onkeypress = function (e) {
+          e = e || window.event;
+          if (e.keyCode == '120') {
+              shake();
+          }
+          if (e.keyCode == '99') {
+              stopShake();
+          }
+      };
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      const shake = () => {
+        document.querySelector('.notification').style.animation = 'fadein 1s forwards';
+        document.querySelector('.event-maiden').className += ' shake-little shake-constant shake-constant--hover';
+      }
+
+      const stopShake = () => {
+        document.querySelector('.notification').style.animation = '';
+        document.querySelector('.event-maiden').className = 'event-with-notification event-maiden';
+      }
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+
+    <script>
+      // setInterval(() => {
+      //   $.get('http://worldclockapi.com/api/json/est/now', (data) => {
+      //     if (data.currentDateTime.slice(-1) == "0") {
+      //       shake();
+      //       setTimeout(stopShake, 2000);
+      //     }
+      //   });
+      // }, 2000);
+    </script>
   </body>
 </html>
