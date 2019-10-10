@@ -43,14 +43,18 @@
           }
       };
 
+      var isShaking = false;
+
       const shake = () => {
         document.querySelector('.notification').style.animation = 'fadein 1s forwards';
         document.querySelector('.event-maiden').className += ' shake-little shake-constant shake-constant--hover';
+        isShaking = true;
       }
 
       const stopShake = () => {
         document.querySelector('.notification').style.animation = '';
         document.querySelector('.event-maiden').className = 'event-with-notification event-maiden';
+        isShaking = false;
       }
     </script>
 
@@ -61,14 +65,15 @@
     </script>
 
     <script>
-      // setInterval(() => {
-      //   $.get('http://worldclockapi.com/api/json/est/now', (data) => {
-      //     if (data.currentDateTime.slice(-1) == "0") {
-      //       shake();
-      //       setTimeout(stopShake, 2000);
-      //     }
-      //   });
-      // }, 2000);
+      setInterval(() => {
+        if (isShaking) return;
+        $.get('https://eb-aws-sns-endpoint.herokuapp.com/api/selling_fast', (data) => {
+          if (data.data.selling_fast) {
+            shake();
+            setTimeout(stopShake, 6000);
+          }
+        });
+      }, 2000);
     </script>
   </body>
 </html>
