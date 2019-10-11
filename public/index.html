@@ -45,15 +45,16 @@
 
       var isShaking = false;
 
-      const shake = () => {
+      const shake = (event) => {
+        console.log(event)
         document.querySelector('.notification').style.animation = 'fadein 1s forwards';
-        document.querySelector('.event-maiden').className += ' shake-little shake-constant shake-constant--hover';
+        document.querySelector(event).className += ' shake-little shake-constant shake-constant--hover';
         isShaking = true;
       }
 
-      const stopShake = () => {
+      const stopShake = (event) => {
         document.querySelector('.notification').style.animation = '';
-        document.querySelector('.event-maiden').className = 'event-with-notification event-maiden';
+        document.querySelector(event).className = 'event-with-notification event-maiden';
         isShaking = false;
       }
     </script>
@@ -67,10 +68,36 @@
     <script>
       setInterval(() => {
         if (isShaking) return;
-        $.get('https://cramm.pythonanywhere.com/api/selling_fast?id=[1313, 1212]', (data) => {
-          if (data.data.selling_fast) {
-            shake();
-            setTimeout(stopShake, 6000);
+        $.get('https://cramm.pythonanywhere.com/api/selling_fast?ids=1313,1212,1111,1010,999', (data) => {
+          if (data.data['131313']) {
+              const event = '.event-131313';
+
+              shake(event);
+              setTimeout(stopShake(event), 6000);
+          }
+          if (data.data['121212']) {
+            const event = '.event-121212';
+
+            shake(event);
+            setTimeout(stopShake(event), 6000);
+          }
+          if (data.data['111111']) {
+            const event = '.event-111111';
+
+            shake(event);
+            setTimeout(stopShake(event), 6000);
+          }
+          if (data.data['101010']) {
+            const event = '.event-101010';
+
+            shake(event);
+            setTimeout(stopShake(event), 6000);
+          }
+          if (data.data['999']) {
+            const event = '.event-999';
+
+            shake(event);
+            setTimeout(stopShake(event), 6000);
           }
         });
       }, 2000);
