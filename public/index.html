@@ -67,7 +67,7 @@
     <script>
       setInterval(() => {
         if (isShaking) return;
-        $.get('https://eb-aws-sns-endpoint.herokuapp.com/api/selling_fast', (data) => {
+        $.get('https://cramm.pythonanywhere.com/api/selling_fast', (data) => {
           if (data.data.selling_fast) {
             shake();
             setTimeout(stopShake, 6000);
