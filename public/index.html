@@ -72,31 +72,31 @@
       setInterval(() => {
         if (isShaking) return;
         $.get('https://cramm.pythonanywhere.com/api/selling_fast?ids=131313,121212,111111,101010,999', (data) => {
-          if (data.data['131313']) {
+          if (data.data['131313'] === "true") {
               const event = '.event-131313';
 
               shake(event);
               setTimeout(stopShake, 6000);
           }
-          if (data.data['121212']) {
+          if (data.data['121212'] === "true") {
             const event = '.event-121212';
 
             shake(event);
             setTimeout(stopShake, 6000);
           }
-          if (data.data['111111']) {
+          if (data.data['111111'] === "true") {
             const event = '.event-111111';
 
             shake(event);
             setTimeout(stopShake, 6000);
           }
-          if (data.data['101010']) {
+          if (data.data['101010'] === "true") {
             const event = '.event-101010';
 
             shake(event);
             setTimeout(stopShake, 6000);
           }
-          if (data.data['999']) {
+          if (data.data['999'] === "true") {
             const event = '.event-999';
 
             shake(event);
