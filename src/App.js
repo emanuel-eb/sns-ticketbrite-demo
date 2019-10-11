@@ -28,6 +28,7 @@ function App() {
                     }}
                     tickets="tickets button"
                     cls="event-131313"
+                    notification="notification-131313"
                     id='131313'
                 />
                 <Event
@@ -43,6 +44,7 @@ function App() {
                     }}
                     tickets="tickets button"
                     cls="event-121212"
+                    notification="notification-121212"
                     id='121212'
                 />
 
@@ -59,6 +61,7 @@ function App() {
                     }}
                     tickets="tickets button"
                     cls="event-111111"
+                    notification="notification-111111"
                     id='111111'
                 />
                 <Event
@@ -74,6 +77,7 @@ function App() {
                     }}
                     tickets="tickets button"
                     cls="event-101010"
+                    notification="notification-101010"
                     id='101010'
                 />
                 <Event
@@ -89,6 +93,7 @@ function App() {
                     }}
                     tickets="tickets button"
                     cls="event-999"
+                    notification="notification-999"
                     id='999'
                 />
             </div>
@@ -105,6 +110,7 @@ class Event extends React.Component {
             name,
             location,
             cls,
+            notification,
         } = this.props;
 
         return (
@@ -124,7 +130,7 @@ class Event extends React.Component {
                         <div className="event__tickets">Get tickets</div>
                     </div>
                 </div>
-                <div className="notification">
+                <div className={"notification " + notification}>
                     ⏰This event is selling fast! Hurry up!!
                 </div>
                 <hr className="event__hr"></hr>

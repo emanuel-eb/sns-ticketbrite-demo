@@ -46,13 +46,17 @@
       var isShaking = false;
 
       const shake = (event) => {
-        document.querySelector('.notification').style.animation = 'fadein 1s forwards';
-        document.querySelector(event).className += ' shake-little shake-constant shake-constant--hover';
+        document.querySelector('.notification-' + event).style.animation = 'fadein 1s forwards';
+        document.querySelector('.event-' + event).className += ' shake-little shake-constant shake-constant--hover';
         isShaking = true;
       }
 
       const stopShake = () => {
-        document.querySelector('.notification').style.animation = '';
+        document.querySelector('.notification-131313').style.animation = '';
+        document.querySelector('.notification-121212').style.animation = '';
+        document.querySelector('.notification-111111').style.animation = '';
+        document.querySelector('.notification-101010').style.animation = '';
+        document.querySelector('.notification-999').style.animation = '';
         document.querySelector('.event-131313').className = 'event-with-notification event-131313';
         document.querySelector('.event-121212').className = 'event-with-notification event-121212';
         document.querySelector('.event-111111').className = 'event-with-notification event-111111';
@@ -73,33 +77,23 @@
         if (isShaking) return;
         $.get('https://cramm.pythonanywhere.com/api/selling_fast?ids=131313,121212,111111,101010,999', (data) => {
           if (data.data['131313'] === "true") {
-              const event = '.event-131313';
-
-              shake(event);
+              shake(131313);
               setTimeout(stopShake, 6000);
           }
           if (data.data['121212'] === "true") {
-            const event = '.event-121212';
-
-            shake(event);
+            shake(121212);
             setTimeout(stopShake, 6000);
           }
           if (data.data['111111'] === "true") {
-            const event = '.event-111111';
-
-            shake(event);
+            shake(111111);
             setTimeout(stopShake, 6000);
           }
           if (data.data['101010'] === "true") {
-            const event = '.event-101010';
-
-            shake(event);
+            shake(101010);
             setTimeout(stopShake, 6000);
           }
           if (data.data['999'] === "true") {
-            const event = '.event-999';
-
-            shake(event);
+            shake(999);
             setTimeout(stopShake, 6000);
           }
         });
